@@ -4,9 +4,9 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
+
 
 public class ConnexionBanque {
     public static void main(String[] args) throws ParseException {
