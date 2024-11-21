@@ -8,8 +8,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="compte")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TYPE")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Compte {
 
     @Id
@@ -51,6 +50,30 @@ public class Compte {
 
     public void setClients(List<Client> clients) {
         this.clients = clients;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public List<Operation> getOperations() {
+        return operations;
+    }
+
+    public void setOperations(List<Operation> operations) {
+        this.operations = operations;
     }
 
     @Override

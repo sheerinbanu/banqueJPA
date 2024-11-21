@@ -7,8 +7,6 @@ import java.util.Date;
  * Hérite de la classe Compte
  */
 @Entity
-@Table(name="assurance_vie")
-@DiscriminatorValue("A")
 public class AssuranceVie extends Compte{
 
     @Temporal(TemporalType.DATE)

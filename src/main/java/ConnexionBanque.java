@@ -37,7 +37,7 @@ public class ConnexionBanque {
         em.persist(c3);
 
         //Création du  LivreatA et insertion dans la bdd
-        LivretA liv1 = new LivretA("FR000055", 1000.88, 0.25);
+        LivretA liv1 = new LivretA("FR440055", 1000.88, 0.25);
         em.persist(liv1);
         //Ajout du LivretA dans le compte c1
         c1.getComptes().add(liv1);
@@ -46,16 +46,14 @@ public class ConnexionBanque {
         em.persist(liv2);
         c2.getComptes().add(liv2);
 
-        //Création d'un virement
-        Virement v1 = new Virement(new Date(),2300,"vacances", "Dupont");
-        //Insertion du virement dans la bdd
+        //Création d'une opération de virement
+        Compte compte = em.find(Compte.class, 1L);
+        Virement v1 = new Virement(new Date(), 2341.09, "vacances", "Jean Dupont");
+        v1.setCompte(compte);
         em.persist(v1);
 
-        Virement v2 = new Virement(new Date(), 1666, "retraite", "Bernard");
-        em.persist(v2);
-
         //Création d'une assurance vie et sa persistance dans la bdd
-        AssuranceVie a1 = new AssuranceVie("FR000055", 3455, new Date(), 2.6);
+        AssuranceVie a1 = new AssuranceVie("FR000055", 3455.66, new Date(), 2.6);
         em.persist(a1);
         et.commit();
         em.close();

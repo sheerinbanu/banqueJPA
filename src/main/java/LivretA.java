@@ -5,8 +5,6 @@ import jakarta.persistence.*;
  * Hérite de la classe Compte
  */
 @Entity
-@Table(name="livret_a")
-@DiscriminatorValue("L")
 public class LivretA extends Compte{
 
     @Column(name="taux_livretA", nullable = false)
