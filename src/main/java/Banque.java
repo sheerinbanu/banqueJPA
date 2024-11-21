@@ -3,6 +3,10 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Représente une banque avec un nom et une liste de clients
+ * Elle est relié a la classe Client par une relation OneToMany( une banque contient 1 à plusieurs clients)
+ */
 @Entity
 @Table(name="banque")
 public class Banque {
@@ -11,10 +15,12 @@ public class Banque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="nom", length = 30, nullable = false,unique = true)
     private String nom;
 
     @OneToMany(mappedBy = "banque")
     private List<Client> clients = new ArrayList<>();
+
 
     public Banque(){}
 

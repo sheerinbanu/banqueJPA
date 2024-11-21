@@ -1,5 +1,9 @@
 import jakarta.persistence.*;
 
+/**
+ * Représente une adresse avec un numéro, un nom de rue, un code postal et une ville
+ * Utilisée comme une entité embarquée dans une autre entité (Client)
+ */
 @Embeddable
 public class Adresse {
 

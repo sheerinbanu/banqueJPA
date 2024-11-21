@@ -1,11 +1,17 @@
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+/**
+ * Représente un livretA, un type de compte d'épargne contenant un taux de livret A
+ * Hérite de la classe Compte
+ */
 @Entity
 @Table(name="livret_a")
+@DiscriminatorValue("L")
 public class LivretA extends Compte{
 
+    @Column(name="taux_livretA", nullable = false)
     private double taux;
+
     public LivretA(){}
 
     public LivretA(double taux) {

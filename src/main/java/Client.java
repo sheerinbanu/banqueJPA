@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Représente un client avec un nom, un prénom, une date de naissance et une adresse.
+ */
 @Entity
 @Table(name = "client")
 public class Client {
@@ -11,8 +14,10 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="nom", length = 30, nullable = false,unique = true)
     private String nom;
 
+    @Column(name="prenom", length = 30, nullable = false)
     private String prenom;
 
     @Temporal(TemporalType.DATE)
@@ -23,13 +28,13 @@ public class Client {
     private Adresse adresse;
 
     @ManyToOne
-    @JoinColumn(name="id_banque")
+    @JoinColumn(name="banque_id")
     private Banque banque;
 
     @ManyToMany
-    @JoinTable(name="COMPO",
-            joinColumns= @JoinColumn(name="ID_CLIENT", referencedColumnName= "ID"),
-            inverseJoinColumns= @JoinColumn(name="ID_COMPTE", referencedColumnName="ID")
+    @JoinTable(name="Compte_client",
+            joinColumns= @JoinColumn(name="client_id", referencedColumnName= "id"),
+            inverseJoinColumns= @JoinColumn(name="compte_id", referencedColumnName="id")
     )
     private List<Compte> comptes = new ArrayList<>();
 
@@ -43,6 +48,13 @@ public class Client {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
+    }
+
+    public Client(String nom, String prenom, Date dateNaissance, Adresse adresse) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.adresse = adresse;
     }
 
     public void setComptes(List<Compte> comptes) {

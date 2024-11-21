@@ -1,11 +1,20 @@
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 import java.util.Date;
-@Entity
 
+/**
+ * Représente un virement bancaire avec un nom de bénéficiaire
+ * Hérite de la classe Opération
+ *
+ */
+@Entity
 public class Virement extends Operation{
 
+    @Column(name="beneficiaire", nullable = false)
     private String beneficiaire;
 
     public Virement(){}

@@ -1,13 +1,22 @@
 import jakarta.persistence.*;
 
 import java.util.Date;
+
+/**
+ * Représente un compte d'assurance vie contenant une date de fin d'assurance et un taux
+ * Hérite de la classe Compte
+ */
 @Entity
 @Table(name="assurance_vie")
+@DiscriminatorValue("A")
 public class AssuranceVie extends Compte{
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name="date_fin")
     private Date dateFin;
+
+
+    @Column(name="taux_assurance", nullable = false)
     private double taux;
 
     public AssuranceVie(){}

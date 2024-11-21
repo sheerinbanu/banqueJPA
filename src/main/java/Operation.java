@@ -2,23 +2,31 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
+/**
+ * Représente une opération bancaire avec une date d'opération, un montant et un motif
+ * Elle est lié à la classe Compte par une relation ManyToOne (un compte peut contenir zéro à plusieurs opérations)
+ */
 @Entity
 @Table(name="operation")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Operation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Temporal(TemporalType.DATE)
+    @Column(name="date")
     private Date date;
 
+    @Column(name="montant", nullable = false)
     private double montant;
 
+    @Column(name="motif", nullable = false, length = 255)
     private String motif;
 
     @ManyToOne
-    @JoinColumn(name="id_compte")
+    @JoinColumn(name="compte_id")
     private Compte compte;
 
     public int getId() {

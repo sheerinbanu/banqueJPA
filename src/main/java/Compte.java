@@ -2,24 +2,30 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Représente un compte bancaire avec un numéro, solde, une liste de clients et une liste d'opérations
+ * et est la classe mère de la classe Assurance Vie et de la classe LivretA
+ */
 @Entity
 @Table(name="compte")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="TYPE")
 public class Compte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "numero", nullable = false, unique = true, length = 20)
     private String numero;
 
+    @Column(name="solde", nullable = false)
     private double solde;
 
-
     @ManyToMany
-    @JoinTable(name="COMPO",
-            joinColumns= @JoinColumn(name="ID_COMPTE", referencedColumnName= "ID"),
-            inverseJoinColumns= @JoinColumn(name="ID_CLIENT", referencedColumnName="ID")
+    @JoinTable(name="compte_client",
+            joinColumns= @JoinColumn(name="compte_id", referencedColumnName= "id"),
+            inverseJoinColumns= @JoinColumn(name="client_id", referencedColumnName="id")
     )
     private List<Client> clients = new ArrayList<>();
 
@@ -29,7 +35,6 @@ public class Compte {
     public Compte(){
 
     }
-
 
     public Compte(String numero, double solde) {
         this.numero = numero;
