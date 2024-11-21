@@ -15,7 +15,6 @@ public class Adresse {
 
     private String ville;
 
-
     public Adresse(){}
 
     public Adresse(int numero, String rue, int codePostal, String ville) {
@@ -64,7 +63,6 @@ public class Adresse {
                 ", rue='" + rue + '\'' +
                 ", codePostal=" + codePostal +
                 ", ville='" + ville + '\'' +
-
                 '}';
     }
 }

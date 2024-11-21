@@ -53,7 +53,6 @@ public class Compte {
         this.clients = clients;
     }
 
-
     @Override
     public String toString() {
         return "Compte{" +

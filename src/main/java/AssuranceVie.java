@@ -15,7 +15,6 @@ public class AssuranceVie extends Compte{
     @Column(name="date_fin")
     private Date dateFin;
 
-
     @Column(name="taux_assurance", nullable = false)
     private double taux;
 
@@ -46,5 +45,13 @@ public class AssuranceVie extends Compte{
 
     public void setTaux(double taux) {
         this.taux = taux;
+    }
+
+    @Override
+    public String toString() {
+        return "AssuranceVie{" +
+                "dateFin=" + dateFin +
+                ", taux=" + taux +
+                '}';
     }
 }

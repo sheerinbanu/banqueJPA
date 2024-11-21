@@ -36,5 +36,10 @@ public class Virement extends Operation{
         this.beneficiaire = beneficiaire;
     }
 
-
+    @Override
+    public String toString() {
+        return "Virement{" +
+                "beneficiaire='" + beneficiaire + '\'' +
+                '}';
+    }
 }

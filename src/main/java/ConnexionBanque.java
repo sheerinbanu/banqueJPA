@@ -13,7 +13,6 @@ public class ConnexionBanque {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("banque");
         EntityManager em = emf.createEntityManager();
-
         EntityTransaction et = em.getTransaction();
         et.begin();
         //Création des instances de banque
