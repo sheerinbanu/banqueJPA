@@ -21,7 +21,6 @@ public class Banque {
     @OneToMany(mappedBy = "banque")
     private List<Client> clients = new ArrayList<>();
 
-
     public Banque(){}
 
     public Banque(String nom) {
